@@ -85,6 +85,11 @@ contract ExponentialNoError {
         return uint32(n);
     }
 
+    function safe48(uint n, string memory errorMessage) pure internal returns (uint48) {
+        require(n < 2**48, errorMessage);
+        return uint48(n);
+    }
+
     function add_(Exp memory a, Exp memory b) pure internal returns (Exp memory) {
         return Exp({mantissa: add_(a.mantissa, b.mantissa)});
     }
